@@ -10,7 +10,7 @@ uploaded_file=st.file_uploader("upload image",type=["png","jpg","jpeg"])
 if uploaded_file is not None:
   image=Image.open(uploaded_file).convert("L")
   st.image(image,caption="uploaded image")
-image=image.resize((28,28))
+image=image.resize((28,28),Image.Resampling.LANCZOS)
 image_array=np.array(image)
 image_array=image_array/255
 image_array=image_array.reshape(1,28,28,1)
